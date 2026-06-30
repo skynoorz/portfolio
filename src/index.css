@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Dark theme (default) — RGB channel triplets so Tailwind's /opacity works. */
+  :root {
+    color-scheme: dark;
+    --c-bg: 5 8 22; /* #050816 */
+    --c-surface: 15 23 42; /* #0F172A */
+    --c-surface-light: 17 29 54; /* #111d36 */
+    --c-fg: 255 255 255; /* white text */
+    --c-muted: 148 163 184; /* #94A3B8 */
+    --c-line: 255 255 255; /* borders, used at low opacity */
+    --c-glass: 255 255 255; /* glass fills, used at low opacity */
+  }
+
+  /* Light theme */
+  :root.light {
+    color-scheme: light;
+    --c-bg: 244 247 252; /* soft off-white */
+    --c-surface: 255 255 255;
+    --c-surface-light: 237 242 249;
+    --c-fg: 11 18 32; /* near-black text */
+    --c-muted: 71 85 105; /* slate-600 */
+    --c-line: 2 6 23; /* dark hairlines on light */
+    --c-glass: 2 6 23; /* dark glass on light */
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Offset anchored scroll targets so the fixed navbar never covers headings. */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(37, 99, 235, 0.12), transparent 40%),
+      radial-gradient(circle at 85% 0%, rgba(37, 99, 235, 0.1), transparent 45%);
+    background-attachment: fixed;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Visible focus ring for keyboard users only. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background rounded-md;
+  }
+
+  ::selection {
+    @apply bg-primary/30 text-foreground;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply border border-line/10 bg-glass/[0.03] backdrop-blur-md;
+  }
+
+  .section-padding {
+    @apply mx-auto w-full max-w-6xl px-6 py-24 sm:px-8;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-light via-primary to-primary-light bg-clip-text text-transparent;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-300 focus-visible:ring-2 focus-visible:ring-primary;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-white shadow-glow hover:bg-primary-dark hover:shadow-[0_0_50px_-8px_rgba(37,99,235,0.7)];
+  }
+
+  .btn-secondary {
+    @apply btn glass text-foreground hover:border-primary/50 hover:bg-glass/[0.06];
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar (themed) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--c-bg));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--c-surface-light));
+  border-radius: 9999px;
+  border: 2px solid rgb(var(--c-bg));
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

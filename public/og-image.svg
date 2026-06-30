@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#050816" />
+      <stop offset="1" stop-color="#0F172A" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="0%" r="70%">
+      <stop offset="0" stop-color="#2563EB" stop-opacity="0.35" />
+      <stop offset="1" stop-color="#2563EB" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3b82f6" />
+      <stop offset="1" stop-color="#2563EB" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#glow)" />
+  <text x="90" y="300" font-family="'Space Grotesk', sans-serif" font-size="78" font-weight="700" fill="#ffffff">Ronald Guarachi</text>
+  <text x="92" y="380" font-family="Inter, sans-serif" font-size="40" font-weight="600" fill="url(#accent)">Backend Java Developer</text>
+  <text x="92" y="445" font-family="Inter, sans-serif" font-size="28" fill="#94A3B8">Java · Spring Boot · Kotlin · Microservices · Hexagonal Architecture</text>
+  <rect x="92" y="500" width="120" height="6" rx="3" fill="url(#accent)" />
+</svg>

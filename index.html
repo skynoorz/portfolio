@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050816" />
+
+    <!-- Primary Meta Tags -->
+    <title>Ronald Guarachi — Backend Java Developer</title>
+    <meta
+      name="description"
+      content="Ronald Guarachi — Backend-focused software engineer specialized in Java, Spring Boot, Kotlin, Hexagonal Architecture and Microservices. 4+ years building production-grade APIs for banking and telecom."
+    />
+    <meta name="author" content="Ronald Alcides Guarachi Enriquez" />
+    <meta
+      name="keywords"
+      content="Backend Developer, Java, Spring Boot, Kotlin, Microservices, Hexagonal Architecture, Kubernetes, Software Engineer, Bolivia"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ronald Guarachi — Backend Java Developer" />
+    <meta
+      property="og:description"
+      content="Backend-focused software engineer specialized in Java, Spring Boot, Kotlin, Hexagonal Architecture and Microservices."
+    />
+    <meta property="og:image" content="./og-image.svg" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ronald Guarachi — Backend Java Developer" />
+    <meta
+      name="twitter:description"
+      content="Backend-focused software engineer specialized in Java, Spring Boot, Kotlin, Hexagonal Architecture and Microservices."
+    />
+    <meta name="twitter:image" content="./og-image.svg" />
+
+    <!-- Apply saved theme before paint to avoid a flash of the wrong theme. -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (!t) {
+            t = window.matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark';
+          }
+          if (t === 'light') document.documentElement.classList.add('light');
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
