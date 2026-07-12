@@ -1,4 +1,5 @@
 import type { IconType } from 'react-icons';
+import type { CoverId } from '../components/ProjectCover';
 import { FaJava } from 'react-icons/fa';
 import {
   SiKotlin,
@@ -65,8 +66,10 @@ export const technologies: Technology[] = [
   { name: 'OpenShift', icon: SiRedhatopenshift, color: '#EE0000' },
   { name: 'Git', icon: SiGit, color: '#F05032' },
   { name: 'Maven', icon: SiApachemaven, color: '#C71A36' },
-  { name: 'Gradle', icon: SiGradle, color: '#02303A' },
-  { name: 'Kafka', icon: SiApachekafka, color: '#FFFFFF' },
+  // Kafka's mark is black/white and Gradle's is near-black — both invisible in
+  // one of the two themes, so they follow the foreground color instead.
+  { name: 'Gradle', icon: SiGradle, color: 'rgb(var(--c-fg))' },
+  { name: 'Kafka', icon: SiApachekafka, color: 'rgb(var(--c-fg))' },
   { name: 'RabbitMQ', icon: SiRabbitmq, color: '#FF6600' },
   { name: 'Redis', icon: SiRedis, color: '#FF4438' },
   { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
@@ -74,7 +77,7 @@ export const technologies: Technology[] = [
   { name: 'REST APIs', icon: TbApi, color: '#3b82f6' },
   { name: 'Hexagonal Architecture', icon: TbHexagons, color: '#22d3ee' },
   { name: 'JWT', icon: SiJsonwebtokens, color: '#FB015B' },
-  { name: 'Keycloak', icon: SiKeycloak, color: '#4D4D4D' },
+  { name: 'Keycloak', icon: SiKeycloak, color: '#008AAA' },
 ];
 
 /** Stable shared parts of each experience; localized copy is in translations. */
@@ -90,22 +93,10 @@ export const experienceMeta: { company: string; stack: string[] }[] = [
 ];
 
 /** Stable shared parts of each project; localized title/description in translations. */
-export const projectMeta: { image: string; stack: string[] }[] = [
-  {
-    image:
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=70',
-    stack: ['Java', 'Spring Boot', 'REST', 'Hexagonal'],
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=70',
-    stack: ['Angular', 'Spring Boot', 'PostgreSQL'],
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=1200&q=70',
-    stack: ['Kotlin', 'Spring Data MongoDB', 'mongosh', 'GitLab CI'],
-  },
+export const projectMeta: { cover: CoverId; stack: string[] }[] = [
+  { cover: 'banking', stack: ['Java', 'Spring Boot', 'REST', 'Hexagonal'] },
+  { cover: 'survey', stack: ['Angular', 'Spring Boot', 'PostgreSQL'] },
+  { cover: 'mongo', stack: ['Kotlin', 'Spring Data MongoDB', 'mongosh', 'GitLab CI'] },
 ];
 
 /** Numeric values for the animated counters; labels come from translations. */

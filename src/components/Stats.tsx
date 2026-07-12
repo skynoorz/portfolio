@@ -22,7 +22,7 @@ function StatCard({
       variants={zoomIn}
       className="glass rounded-3xl p-8 text-center transition-colors hover:border-primary/40"
     >
-      <span className="font-display text-4xl font-bold gradient-text sm:text-5xl">
+      <span className="font-display text-4xl font-bold tabular-nums gradient-text sm:text-5xl">
         {count}
         {suffix ?? ''}
       </span>

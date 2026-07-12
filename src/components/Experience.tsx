@@ -51,7 +51,7 @@ export function Experience() {
                   <h3 className="font-display text-lg font-semibold text-foreground">
                     {item.role}
                   </h3>
-                  <span className="text-sm font-medium text-primary-light">
+                  <span className="glass rounded-full px-3 py-1 text-xs font-semibold text-primary-light">
                     {item.date}
                   </span>
                 </div>

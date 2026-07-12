@@ -6,7 +6,8 @@ export function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="border-t border-line/10">
+    <footer>
+      <div className="divider-glow" aria-hidden="true" />
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 py-10 sm:flex-row sm:px-8">
         <div className="text-center sm:text-left">
           <a

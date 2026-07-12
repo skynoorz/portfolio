@@ -28,7 +28,13 @@ export function Technologies() {
             variants={zoomIn}
             whileHover={{ y: -6 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            className="group glass flex items-center gap-3 rounded-2xl p-4 transition-colors hover:border-primary/40 hover:bg-glass/[0.06]"
+            style={{
+              // Brand-tinted glow used by the hover shadow below.
+              ['--glow' as string]: color.startsWith('#')
+                ? `${color}59`
+                : 'rgb(var(--c-line) / 0.25)',
+            }}
+            className="group glass flex items-center gap-3 rounded-2xl p-4 transition-all hover:border-primary/40 hover:bg-glass/[0.06] hover:shadow-[0_18px_40px_-18px_var(--glow)]"
           >
             <span
               className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-glass/[0.04] transition-transform duration-300 group-hover:scale-110"

@@ -14,11 +14,12 @@ export function Hero() {
       aria-label="Introduction"
       className="relative flex min-h-screen items-center overflow-hidden"
     >
-      {/* Ambient background glows */}
+      {/* Ambient background: dot grid + glows */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"
       >
+        <div className="bg-dots absolute inset-0" />
         <div className="absolute left-1/2 top-[-10%] h-[480px] w-[480px] -translate-x-1/2 rounded-full bg-primary/20 blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[5%] h-[360px] w-[360px] rounded-full bg-primary/10 blur-[120px]" />
       </div>
@@ -98,7 +99,16 @@ export function Hero() {
             aria-hidden="true"
             className="absolute -inset-4 rounded-[2rem] bg-gradient-to-tr from-primary/30 to-transparent blur-2xl"
           />
-          <div className="glass relative animate-float overflow-hidden rounded-[2rem] p-2 shadow-glow">
+          <div className="animate-float relative">
+            {/* Slowly rotating accent ring behind the photo (clipped so the
+                spinning gradient square never pokes outside the frame). */}
+            <div
+              aria-hidden="true"
+              className="absolute -inset-1.5 overflow-hidden rounded-[2.2rem] opacity-80"
+            >
+              <div className="photo-ring absolute inset-[-75%]" />
+            </div>
+            <div className="glass relative overflow-hidden rounded-[2rem] bg-background/60 p-2 shadow-glow">
             <img
               src={asset(profile.profileImage)}
               alt={`Portrait of ${profile.fullName}`}
@@ -107,6 +117,7 @@ export function Hero() {
               loading="eager"
               className="aspect-square w-full rounded-[1.6rem] object-cover"
             />
+            </div>
           </div>
         </motion.div>
       </div>

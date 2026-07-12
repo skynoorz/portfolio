@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 import { HiBars3, HiXMark } from 'react-icons/hi2';
 import { navSections, profile } from '../data/portfolio';
 import { useScrollSpy } from '../hooks/useScrollSpy';
@@ -11,6 +11,14 @@ export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const activeId = useScrollSpy(navSections, 96);
   const { t } = useLanguage();
+
+  // Thin reading-progress bar along the bottom edge of the header.
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -129,6 +137,13 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Scroll progress */}
+      <motion.div
+        aria-hidden="true"
+        style={{ scaleX: progress }}
+        className="absolute inset-x-0 bottom-0 h-[2px] origin-left bg-gradient-to-r from-primary via-primary-light to-cyan-400"
+      />
     </motion.header>
   );
 }

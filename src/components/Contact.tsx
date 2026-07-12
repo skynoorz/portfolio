@@ -17,7 +17,7 @@ const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 const emailjsConfigured = Boolean(SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY);
 
 const inputClass =
-  'rounded-xl border border-line/10 bg-glass/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/60 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary';
+  'rounded-xl border border-line/10 bg-glass/[0.03] px-4 py-3 text-sm text-foreground transition-shadow placeholder:text-muted/60 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary focus:shadow-[0_0_0_4px_rgb(37_99_235/0.12)]';
 
 export function Contact() {
   const formRef = useRef<HTMLFormElement>(null);

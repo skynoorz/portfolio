@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Section } from './ui/Section';
 import { SectionHeading } from './ui/SectionHeading';
+import { ProjectCover } from './ProjectCover';
 import { projectMeta } from '../data/portfolio';
 import { fadeUp, staggerContainer, viewportOnce } from '../lib/motion';
 import { useLanguage } from '../providers/LanguageProvider';
@@ -33,17 +34,10 @@ export function Projects() {
               transition={{ type: 'spring', stiffness: 260, damping: 22 }}
               className="group glass flex flex-col overflow-hidden rounded-3xl"
             >
-              <div className="relative aspect-[16/10] overflow-hidden">
-                <img
-                  src={meta.image}
-                  alt={`${item.title} preview`}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent"
-                />
+              <div className="relative aspect-[16/10] overflow-hidden border-b border-line/10 bg-glass/[0.02]">
+                <div className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]">
+                  <ProjectCover id={meta.cover} title={item.title} />
+                </div>
               </div>
 
               <div className="flex flex-1 flex-col p-6">
