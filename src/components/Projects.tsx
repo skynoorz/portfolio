@@ -4,6 +4,7 @@ import { SectionHeading } from './ui/SectionHeading';
 import { ProjectCover } from './ProjectCover';
 import { projectMeta } from '../data/portfolio';
 import { fadeUp, staggerContainer, viewportOnce } from '../lib/motion';
+import { trackPointer } from '../lib/spotlight';
 import { useLanguage } from '../providers/LanguageProvider';
 
 export function Projects() {
@@ -12,6 +13,7 @@ export function Projects() {
   return (
     <Section id="projects" ariaLabel={t.projects.title}>
       <SectionHeading
+        index="04"
         eyebrow={t.projects.eyebrow}
         title={t.projects.title}
         description={t.projects.description}
@@ -22,7 +24,7 @@ export function Projects() {
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
       >
         {projectMeta.map((meta, i) => {
           const item = t.projects.items[i];
@@ -32,12 +34,16 @@ export function Projects() {
               variants={fadeUp}
               whileHover={{ y: -8 }}
               transition={{ type: 'spring', stiffness: 260, damping: 22 }}
-              className="group glass flex flex-col overflow-hidden rounded-3xl"
+              onMouseMove={trackPointer}
+              className="spotlight group glass flex flex-col overflow-hidden rounded-3xl"
             >
               <div className="relative aspect-[16/10] overflow-hidden border-b border-line/10 bg-glass/[0.02]">
-                <div className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]">
+                <div className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.05]">
                   <ProjectCover id={meta.cover} title={item.title} />
                 </div>
+                <span className="absolute left-4 top-4 font-mono text-[11px] tracking-widest text-muted">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
               </div>
 
               <div className="flex flex-1 flex-col p-6">
@@ -48,7 +54,7 @@ export function Projects() {
                   {item.description}
                 </p>
 
-                <ul className="mt-4 flex flex-wrap gap-2">
+                <ul className="mt-5 flex flex-wrap gap-2">
                   {meta.stack.map((tech) => (
                     <li
                       key={tech}

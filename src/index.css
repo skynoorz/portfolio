@@ -149,6 +149,103 @@
       transform: rotate(360deg);
     }
   }
+
+  /* Cursor-tracked glow. Pair with `trackPointer` (src/lib/spotlight.ts),
+     which writes --mx / --my on the element as the pointer moves. */
+  .spotlight {
+    position: relative;
+  }
+
+  .spotlight::before,
+  .spotlight::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  /* Soft fill that follows the cursor. */
+  .spotlight::before {
+    background: radial-gradient(
+      420px circle at var(--mx, 50%) var(--my, 50%),
+      rgb(37 99 235 / 0.13),
+      transparent 45%
+    );
+  }
+
+  /* 1px border highlight that follows the cursor. */
+  .spotlight::after {
+    padding: 1px;
+    background: radial-gradient(
+      240px circle at var(--mx, 50%) var(--my, 50%),
+      rgb(59 130 246 / 0.9),
+      transparent 60%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .spotlight:hover::before,
+  .spotlight:hover::after {
+    opacity: 1;
+  }
+
+  /* Infinite horizontal marquee: the track holds two identical halves. */
+  .marquee {
+    animation: marquee 32s linear infinite;
+  }
+
+  .marquee-mask {
+    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  }
+
+  .marquee-mask:hover .marquee {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Slow shimmer for the gradient role line in the hero. */
+  .gradient-shimmer {
+    background-image: linear-gradient(
+      100deg,
+      #3b82f6 0%,
+      #2563eb 30%,
+      #22d3ee 50%,
+      #2563eb 70%,
+      #3b82f6 100%
+    );
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 7s ease-in-out infinite alternate;
+  }
+
+  @keyframes shimmer {
+    to {
+      background-position: 100% 0;
+    }
+  }
+
+  /* Oversized outlined wordmark in the footer. */
+  .wordmark {
+    color: transparent;
+    -webkit-text-stroke: 1px rgb(var(--c-line) / 0.14);
+    mask-image: linear-gradient(to bottom, black 20%, transparent 95%);
+    -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 95%);
+  }
 }
 
 @layer utilities {

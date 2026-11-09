@@ -32,7 +32,7 @@ export const profile = {
   fullName: 'Ronald Alcides Guarachi Enriquez',
   email: 'raguarachi0@gmail.com',
   phone: '+591 79145207',
-  profileImage: 'profile.png', // place your photo in /public and update this name
+  profileImage: 'profile.webp', // place your photo in /public and update this name
   cvFile: 'CV_Ronald_Guarachi.pdf', // place your CV in /public and update this name
 } as const;
 
@@ -50,34 +50,49 @@ export const socials: { label: string; href: string; icon: IconType }[] = [
   },
 ];
 
+/** Groups shown in the Technologies section, in display order. */
+export const techCategories = ['core', 'data', 'platform', 'architecture'] as const;
+export type TechCategory = (typeof techCategories)[number];
+
 export interface Technology {
   name: string;
   icon: IconType;
   color: string;
+  category: TechCategory;
 }
 
 export const technologies: Technology[] = [
-  { name: 'Java', icon: FaJava, color: '#f89820' },
-  { name: 'Kotlin', icon: SiKotlin, color: '#7F52FF' },
-  { name: 'Spring Boot', icon: SiSpringboot, color: '#6DB33F' },
-  { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
-  { name: 'Docker', icon: SiDocker, color: '#2496ED' },
-  { name: 'Kubernetes', icon: SiKubernetes, color: '#326CE5' },
-  { name: 'OpenShift', icon: SiRedhatopenshift, color: '#EE0000' },
-  { name: 'Git', icon: SiGit, color: '#F05032' },
-  { name: 'Maven', icon: SiApachemaven, color: '#C71A36' },
+  { name: 'Java', icon: FaJava, color: '#f89820', category: 'core' },
+  { name: 'Kotlin', icon: SiKotlin, color: '#7F52FF', category: 'core' },
+  { name: 'Spring Boot', icon: SiSpringboot, color: '#6DB33F', category: 'core' },
+  { name: 'Maven', icon: SiApachemaven, color: '#C71A36', category: 'core' },
   // Kafka's mark is black/white and Gradle's is near-black — both invisible in
   // one of the two themes, so they follow the foreground color instead.
-  { name: 'Gradle', icon: SiGradle, color: 'rgb(var(--c-fg))' },
-  { name: 'Kafka', icon: SiApachekafka, color: 'rgb(var(--c-fg))' },
-  { name: 'RabbitMQ', icon: SiRabbitmq, color: '#FF6600' },
-  { name: 'Redis', icon: SiRedis, color: '#FF4438' },
-  { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
-  { name: 'Oracle Database', icon: TbDatabase, color: '#F80000' },
-  { name: 'REST APIs', icon: TbApi, color: '#3b82f6' },
-  { name: 'Hexagonal Architecture', icon: TbHexagons, color: '#22d3ee' },
-  { name: 'JWT', icon: SiJsonwebtokens, color: '#FB015B' },
-  { name: 'Keycloak', icon: SiKeycloak, color: '#008AAA' },
+  { name: 'Gradle', icon: SiGradle, color: 'rgb(var(--c-fg))', category: 'core' },
+  { name: 'MongoDB', icon: SiMongodb, color: '#47A248', category: 'data' },
+  { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1', category: 'data' },
+  { name: 'Oracle Database', icon: TbDatabase, color: '#F80000', category: 'data' },
+  { name: 'Redis', icon: SiRedis, color: '#FF4438', category: 'data' },
+  { name: 'Kafka', icon: SiApachekafka, color: 'rgb(var(--c-fg))', category: 'data' },
+  { name: 'RabbitMQ', icon: SiRabbitmq, color: '#FF6600', category: 'data' },
+  { name: 'Docker', icon: SiDocker, color: '#2496ED', category: 'platform' },
+  { name: 'Kubernetes', icon: SiKubernetes, color: '#326CE5', category: 'platform' },
+  { name: 'OpenShift', icon: SiRedhatopenshift, color: '#EE0000', category: 'platform' },
+  { name: 'Git', icon: SiGit, color: '#F05032', category: 'platform' },
+  { name: 'REST APIs', icon: TbApi, color: '#3b82f6', category: 'architecture' },
+  { name: 'Hexagonal Architecture', icon: TbHexagons, color: '#22d3ee', category: 'architecture' },
+  { name: 'JWT', icon: SiJsonwebtokens, color: '#FB015B', category: 'architecture' },
+  { name: 'Keycloak', icon: SiKeycloak, color: '#008AAA', category: 'architecture' },
+];
+
+/** Organizations shown in the marquee under the hero. */
+export const clients = [
+  'Banco Bisa',
+  'Tigo Bolivia',
+  'TD Bank',
+  'AT&T',
+  'Enverus',
+  'Quantum S.R.L.',
 ];
 
 /** Stable shared parts of each experience; localized copy is in translations. */

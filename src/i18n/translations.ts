@@ -1,4 +1,4 @@
-import type { NavSection } from '../data/portfolio';
+import type { NavSection, TechCategory } from '../data/portfolio';
 
 export type Lang = 'en' | 'es';
 
@@ -26,8 +26,28 @@ export interface Translation {
     description: string;
     paragraphs: string[];
     highlights: { label: string; value: string }[];
+    current: string;
   };
-  technologies: { eyebrow: string; title: string; description: string };
+  clients: { label: string };
+  technologies: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    categories: Record<TechCategory, string>;
+  };
+  palette: {
+    open: string;
+    placeholder: string;
+    navigation: string;
+    actions: string;
+    links: string;
+    toggleTheme: string;
+    switchLang: string;
+    copyEmail: string;
+    copied: string;
+    downloadCV: string;
+    empty: string;
+  };
   experience: {
     eyebrow: string;
     title: string;
@@ -104,12 +124,33 @@ const en: Translation = {
       { label: 'Languages', value: 'English · Spanish' },
       { label: 'Open to', value: 'Remote opportunities' },
     ],
+    current: 'Currently at Banco Bisa S.A.',
   },
+  clients: { label: 'I’ve worked on projects for' },
   technologies: {
     eyebrow: 'Tech stack',
     title: 'Technologies I work with',
     description:
       'The tools and platforms I use to design, build and ship production systems.',
+    categories: {
+      core: 'Languages & frameworks',
+      data: 'Data & messaging',
+      platform: 'Platform & DevOps',
+      architecture: 'Architecture & security',
+    },
+  },
+  palette: {
+    open: 'Open command palette',
+    placeholder: 'Type a command or search…',
+    navigation: 'Navigation',
+    actions: 'Actions',
+    links: 'Links',
+    toggleTheme: 'Toggle theme',
+    switchLang: 'Switch to Spanish',
+    copyEmail: 'Copy email address',
+    copied: 'Copied!',
+    downloadCV: 'Download CV',
+    empty: 'No results',
   },
   experience: {
     eyebrow: 'Career',
@@ -262,12 +303,33 @@ const es: Translation = {
       { label: 'Idiomas', value: 'Inglés · Español' },
       { label: 'Disponible para', value: 'Oportunidades remotas' },
     ],
+    current: 'Actualmente en Banco Bisa S.A.',
   },
+  clients: { label: 'He colaborado en proyectos para' },
   technologies: {
     eyebrow: 'Stack técnico',
     title: 'Tecnologías con las que trabajo',
     description:
       'Las herramientas y plataformas que uso para diseñar, construir y desplegar sistemas en producción.',
+    categories: {
+      core: 'Lenguajes y frameworks',
+      data: 'Datos y mensajería',
+      platform: 'Plataforma y DevOps',
+      architecture: 'Arquitectura y seguridad',
+    },
+  },
+  palette: {
+    open: 'Abrir paleta de comandos',
+    placeholder: 'Escribe un comando o busca…',
+    navigation: 'Navegación',
+    actions: 'Acciones',
+    links: 'Enlaces',
+    toggleTheme: 'Cambiar tema',
+    switchLang: 'Cambiar a inglés',
+    copyEmail: 'Copiar correo',
+    copied: '¡Copiado!',
+    downloadCV: 'Descargar CV',
+    empty: 'Sin resultados',
   },
   experience: {
     eyebrow: 'Carrera',

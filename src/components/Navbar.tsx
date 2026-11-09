@@ -6,7 +6,7 @@ import { useScrollSpy } from '../hooks/useScrollSpy';
 import { useLanguage } from '../providers/LanguageProvider';
 import { HeaderControls } from './HeaderControls';
 
-export function Navbar() {
+export function Navbar({ onOpenPalette }: { onOpenPalette: () => void }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const activeId = useScrollSpy(navSections, 96);
@@ -57,7 +57,7 @@ export function Navbar() {
         </a>
 
         {/* Desktop links */}
-        <ul className="hidden items-center gap-1 md:flex">
+        <ul className="hidden items-center gap-1 lg:flex">
           {navSections.map((id) => {
             const isActive = activeId === id;
             return (
@@ -83,16 +83,16 @@ export function Navbar() {
           })}
         </ul>
 
-        <div className="hidden items-center gap-3 md:flex">
-          <HeaderControls />
+        <div className="hidden items-center gap-3 lg:flex">
+          <HeaderControls onOpenPalette={onOpenPalette} />
           <a href="#contact" className="btn-primary !px-5 !py-2">
             {t.cta}
           </a>
         </div>
 
         {/* Mobile controls + toggle */}
-        <div className="flex items-center gap-2 md:hidden">
-          <HeaderControls />
+        <div className="flex items-center gap-2 lg:hidden">
+          <HeaderControls onOpenPalette={onOpenPalette} />
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
@@ -115,7 +115,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="glass overflow-hidden md:hidden"
+            className="glass overflow-hidden lg:hidden"
           >
             <ul className="flex flex-col gap-1 px-6 py-4">
               {navSections.map((id) => (

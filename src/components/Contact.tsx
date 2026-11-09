@@ -6,6 +6,7 @@ import { Section } from './ui/Section';
 import { SectionHeading } from './ui/SectionHeading';
 import { profile, socials } from '../data/portfolio';
 import { fadeUp, staggerContainer, viewportOnce } from '../lib/motion';
+import { trackPointer } from '../lib/spotlight';
 import { useLanguage } from '../providers/LanguageProvider';
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
@@ -57,7 +58,12 @@ export function Contact() {
 
   return (
     <Section id="contact" ariaLabel={c.eyebrow}>
-      <SectionHeading eyebrow={c.eyebrow} title={c.title} description={c.description} />
+      <SectionHeading
+        index="05"
+        eyebrow={c.eyebrow}
+        title={c.title}
+        description={c.description}
+      />
 
       <motion.div
         variants={staggerContainer(0.15)}
@@ -67,7 +73,11 @@ export function Contact() {
         className="grid gap-8 lg:grid-cols-[1fr_1.4fr]"
       >
         {/* Contact info */}
-        <motion.div variants={fadeUp} className="glass rounded-3xl p-8">
+        <motion.div
+          variants={fadeUp}
+          onMouseMove={trackPointer}
+          className="spotlight glass rounded-3xl p-8"
+        >
           <h3 className="font-display text-xl font-semibold text-foreground">
             {c.getInTouch}
           </h3>

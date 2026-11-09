@@ -1,5 +1,7 @@
+import { useCallback, useEffect, useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { ClientsMarquee } from './components/ClientsMarquee';
 import { About } from './components/About';
 import { Technologies } from './components/Technologies';
 import { Experience } from './components/Experience';
@@ -8,8 +10,25 @@ import { Stats } from './components/Stats';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
+import { CommandPalette } from './components/CommandPalette';
 
 export default function App() {
+  const [paletteOpen, setPaletteOpen] = useState(false);
+  const openPalette = useCallback(() => setPaletteOpen(true), []);
+  const closePalette = useCallback(() => setPaletteOpen(false), []);
+
+  // Ctrl/⌘ + K toggles the command palette from anywhere.
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        setPaletteOpen((open) => !open);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
+
   return (
     <>
       {/* Skip link for keyboard / screen-reader users */}
@@ -20,10 +39,11 @@ export default function App() {
         Skip to content
       </a>
 
-      <Navbar />
+      <Navbar onOpenPalette={openPalette} />
 
       <main id="main">
         <Hero />
+        <ClientsMarquee />
         <About />
         <Technologies />
         <Experience />
@@ -34,6 +54,7 @@ export default function App() {
 
       <Footer />
       <ScrollToTop />
+      <CommandPalette open={paletteOpen} onClose={closePalette} />
     </>
   );
 }
